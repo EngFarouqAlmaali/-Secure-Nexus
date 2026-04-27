@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Nexus | Login & Signup with Social Auth</title>
+
+    <!-- Google Fonts: Modern & Elegant -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+    <!-- GSAP Core -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="glass-panel" id="authPanel">
+        <div class="auth-container">
+            <!-- Form side with dynamic login/register -->
+            <div class="form-side" id="formSide">
+                <div class="auth-toggle" id="toggleContainer">
+                    <button class="toggle-btn active" data-form="login">LOG IN</button>
+                    <button class="toggle-btn" data-form="signup">SIGN UP</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="loginForm">
+                    <h1 class="form-title">Welcome back 👋</h1>
+                    <div class="sub">Access your secure dashboard</div>
+                    <form id="loginFormElement" action="#" method="post">
+                        <div class="input-group">
+                            <i class="ri-mail-fill input-icon"></i>
+                            <input type="email" class="input-field" id="loginEmail" placeholder=" " autocomplete="email"
+                                required>
+                            <label style="display:none;">Email</label>
+                        </div>
+                        <div class="input-group">
+                            <i class="ri-lock-2-fill input-icon"></i>
+                            <input type="password" class="input-field" id="loginPassword" placeholder=" "
+                                autocomplete="current-password" required>
+                            <i class="ri-eye-off-line password-eye" data-target="loginPassword"></i>
+                        </div>
+                        <a href="#" class="forgot-link" id="forgotPwdLink">Forgot password?</a>
+                        <button type="submit" class="auth-btn" id="loginBtn">Log In <i
+                                class="ri-send-plane-2-fill"></i></button>
+                        <div class="error-message" id="loginError"></div>
+                    </form>
+                </div>
+
+                <!-- Signup Form (hidden initially) -->
+                <div id="signupForm" style="display: none;">
+                    <h1 class="form-title">Create account ✨</h1>
+                    <div class="sub">Join the future of secure access</div>
+                    <form id="signupFormElement" action="#" method="post">
+                        <div class="input-group">
+                            <i class="ri-user-3-fill input-icon"></i>
+                            <input type="text" class="input-field" id="signupName" placeholder=" " autocomplete="name"
+                                required>
+                        </div>
+                        <div class="input-group">
+                            <i class="ri-mail-fill input-icon"></i>
+                            <input type="email" class="input-field" id="signupEmail" placeholder=" "
+                                autocomplete="email" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="ri-lock-2-fill input-icon"></i>
+                            <input type="password" class="input-field" id="signupPassword" placeholder=" "
+                                autocomplete="new-password" required>
+                            <i class="ri-eye-off-line password-eye" data-target="signupPassword"></i>
+                        </div>
+                        <div class="input-group">
+                            <i class="ri-shield-check-fill input-icon"></i>
+                            <input type="password" class="input-field" id="signupConfirm" placeholder=" "
+                                autocomplete="off" required>
+                            <i class="ri-eye-off-line password-eye" data-target="signupConfirm"></i>
+                        </div>
+                        <button type="submit" class="auth-btn" id="signupBtn">Sign Up <i
+                                class="ri-user-add-fill"></i></button>
+                        <div class="error-message" id="signupError"></div>
+                    </form>
+                </div>
+
+                <!-- Social Auth Section -->
+                <div class="social-section">
+                    <div class="social-text">Continue with</div>
+                    <div class="social-icons">
+                        <div class="social-icon" data-provider="google"><i class="ri-google-fill"></i></div>
+                        <div class="social-icon" data-provider="facebook"><i class="ri-facebook-circle-fill"></i></div>
+                        <div class="social-icon" data-provider="linkedin"><i class="ri-linkedin-box-fill"></i></div>
+                        <div class="social-icon" data-provider="github"><i class="ri-github-fill"></i></div>
+                        <div class="social-icon" data-provider="microsoft"><i class="ri-microsoft-fill"></i></div>
+                    </div>
+                </div>
+                <div class="switch-message" id="switchMsg">
+                    <span id="dynamicSwitchMsg">Don't have an account? <span class="switch-link" id="goToSignup">Sign
+                            Up</span></span>
+                </div>
+            </div>
+
+            <!-- Image side -->
+            <div class="image-side">
+                <div class="code-shell">
+                    <div class="code-title">
+                        <span class="code-badge">C</span>
+                        <span>cyber-run</span>
+                    </div>
+                    <div class="code-lines">
+                        <div class="code-line" data-code="#include <stdio.h>">
+                            <span class="code-num">01</span>
+                            <span class="code-text"></span>
+                        </div>
+                        <div class="code-line" data-code="#include <string.h>">
+                            <span class="code-num">02</span>
+                            <span class="code-text"></span>
+                        </div>
+                        <div class="code-line" data-code="">
+                            <span class="code-num">03</span>
+                            <span class="code-text"></span>
+                        </div>
+                        <div class="code-line" data-code="int main() {">
+                            <span class="code-num">04</span>
+                            <span class="code-text"></span>
+                        </div>
+                        <div class="code-line" data-code="char pass[32] = \" cyber_secure\";">
+                            <span class="code-num">05</span>
+                            <span class="code-text"></span>
+                        </div>
+                        <div class="code-line" data-code="printf(\" %s\\n\", pass);">
+                            <span class="code-num">06</span>
+                            <span class="code-text"></span>
+                        </div>
+                        <div class="code-line" data-code="return 0;">
+                            <span class="code-num">07</span>
+                            <span class="code-text"></span>
+                        </div>
+                        <div class="code-line" data-code="}">
+                            <span class="code-num">08</span>
+                            <span class="code-text"></span>
+                        </div>
+                    </div>
+                    <div class="code-footer">// secure session active — red cyber mode</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="security/security.js"></script>
+
+</body>
+
+</html>
